@@ -1,0 +1,33 @@
+<!-- views/tienda.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Tienda - Listado de Productos</title>
+</head>
+<body>
+  <h1 class="text-center my-4">Listado de Productos</h1>
+  <div class="container">
+    <div class="row">
+      <% productos.forEach(producto => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <% if (producto.imagen) { %>
+              <img src="data:image/png;base64,<%= producto.imagen.toString('base64') %>" class="card-img-top" alt="<%= producto.nombre %>">
+            <% } else { %>
+              <img src="/img/no-image.png" class="card-img-top" alt="Imagen no disponible">
+            <% } %>
+            <div class="card-body">
+              <h5 class="card-title"><%= producto.nombre %></h5>
+              <p class="card-text">$<%= producto.precio %></p>
+              <p class="card-text"><%= producto.descripcion %></p>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>
